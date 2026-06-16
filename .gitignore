@@ -1,0 +1,21 @@
+# compiled output
+/dist
+/node_modules
+
+# logs
+*.log
+npm-debug.log*
+
+# env
+.env
+
+# tests
+/coverage
+
+# IDE
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
