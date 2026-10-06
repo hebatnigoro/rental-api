@@ -33,12 +33,3 @@ Di dalam tiap module, alurnya berlapis (layered):
 Controller  ->  Service  ->  Repository  ->  Database
  (HTTP)        (logic)       (akses data)
 ```
-
-### Kenapa pakai pattern ini?
-
-- **Modular** — tiap fitur terisolasi dalam module-nya sendiri. Mau nambah fitur baru (misalnya `payments`) tinggal bikin module baru tanpa ngutak-atik yang lain. Lebih gampang dirawat kalau project makin besar.
-- **Layered (Controller -> Service -> Repository)** — tanggung jawab tiap layer jelas. Controller cuma ngurus HTTP (request/response), Service ngurus business logic, Repository ngurus akses data. Jadi logic-nya gak numpuk di satu file dan lebih gampang ditest.
-- **Repository Pattern** — service tidak mengakses database secara langsung, tapi lewat class repository. Kalau suatu saat query-nya berubah atau mau ganti sumber data, cukup ubah di repository tanpa menyentuh business logic di service.
-- **Dependency Injection** — semua dependency (service, repository) di-inject lewat constructor, bukan `new` manual. Ini bawaan NestJS dan bikin unit test jauh lebih gampang karena dependency-nya gampang di-mock.
-
-Pattern ini yang biasa saya pakai karena strukturnya konsisten, mudah dipahami orang lain saat kolaborasi, dan scalable tanpa harus over-engineering ke microservices.
